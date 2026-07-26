@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://wang-bohan-portfolio.pages.dev/sitemap-index.xml
+Sitemap: https://wang-bohan-portfolio.bohan391.workers.dev/sitemap-index.xml

@@ -1,7 +1,7 @@
 export type Locale = "en" | "zh";
 
 export const siteMeta = {
-  baseUrl: "https://wang-bohan-portfolio.pages.dev",
+  baseUrl: "https://wang-bohan-portfolio.bohan391.workers.dev",
   title: {
     en: "Wang Bohan | Supply Chain Operations, Analytics & Automation",
     zh: "王泊翰 | 供应链运营、数据分析与智能自动化",

@@ -125,6 +125,6 @@ Suggested Cloudflare Pages project name:
 
 The default production URL should be:
 
-`https://wang-bohan-portfolio.pages.dev`
+`https://wang-bohan-portfolio.bohan391.workers.dev`
 
 When a custom domain is available, add it in Cloudflare Pages > Custom domains, configure DNS, wait for SSL, then set the custom domain as canonical in the files listed above.
