@@ -1,0 +1,61 @@
+---
+import "../styles/tokens.css";
+import "../styles/global.css";
+import { siteMeta, type Locale } from "../data/profile";
+
+interface Props {
+  locale: Locale;
+  canonicalPath?: string;
+}
+
+const { locale, canonicalPath = locale === "zh" ? "/zh/" : "/" } = Astro.props;
+const title = siteMeta.title[locale];
+const description = siteMeta.description[locale];
+const canonical = new URL(canonicalPath, siteMeta.baseUrl).toString();
+const image = new URL(siteMeta.image, siteMeta.baseUrl).toString();
+---
+
+<!doctype html>
+<html lang={locale === "zh" ? "zh-CN" : "en"}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={image} />
+    <meta property="og:locale" content={locale === "zh" ? "zh_CN" : "en_US"} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={siteMeta.baseUrl} />
+    <link rel="alternate" hreflang="zh-CN" href={`${siteMeta.baseUrl}/zh/`} />
+    <link rel="alternate" hreflang="x-default" href={siteMeta.baseUrl} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Wang Bohan",
+      alternateName: "王泊翰",
+      jobTitle: "Supply Chain Operations, Analytics and Automation Specialist",
+      url: canonical,
+      alumniOf: [
+        { "@type": "CollegeOrUniversity", name: "Nanyang Technological University" },
+        { "@type": "CollegeOrUniversity", name: "University of Melbourne" }
+      ],
+      knowsAbout: [
+        "Supply Chain Operations",
+        "Procurement",
+        "Inventory Analytics",
+        "Forecasting",
+        "Operations Automation"
+      ]
+    })} />
+  </head>
+  <body data-locale={locale}>
+    <slot />
+    <script is:inline src="/scripts/main.js" defer></script>
+  </body>
+</html>

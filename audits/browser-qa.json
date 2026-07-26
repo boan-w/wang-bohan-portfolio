@@ -1,0 +1,92 @@
+{
+  "results": [
+    {
+      "viewport": "1440x900",
+      "enOverflow": false,
+      "zhOverflow": false,
+      "title": "Wang Bohan | Supply Chain Operations, Analytics & Automation",
+      "nav": 7,
+      "email": "your.email@example.com",
+      "langHref": "/zh/",
+      "zhHeadline": "供应链运营、数据分析与智能自动化",
+      "console": []
+    },
+    {
+      "viewport": "1280x800",
+      "enOverflow": false,
+      "zhOverflow": false,
+      "title": "Wang Bohan | Supply Chain Operations, Analytics & Automation",
+      "nav": 7,
+      "email": "your.email@example.com",
+      "langHref": "/zh/",
+      "zhHeadline": "供应链运营、数据分析与智能自动化",
+      "console": []
+    },
+    {
+      "viewport": "1024x768",
+      "enOverflow": false,
+      "zhOverflow": false,
+      "title": "Wang Bohan | Supply Chain Operations, Analytics & Automation",
+      "nav": 7,
+      "email": "your.email@example.com",
+      "langHref": "/zh/",
+      "zhHeadline": "供应链运营、数据分析与智能自动化",
+      "console": []
+    },
+    {
+      "viewport": "768x1024",
+      "enOverflow": false,
+      "zhOverflow": false,
+      "title": "Wang Bohan | Supply Chain Operations, Analytics & Automation",
+      "nav": 7,
+      "email": "your.email@example.com",
+      "langHref": "/zh/",
+      "zhHeadline": "供应链运营、数据分析与智能自动化",
+      "console": []
+    },
+    {
+      "viewport": "430x932",
+      "enOverflow": false,
+      "zhOverflow": false,
+      "title": "Wang Bohan | Supply Chain Operations, Analytics & Automation",
+      "nav": 7,
+      "email": "your.email@example.com",
+      "langHref": "/zh/",
+      "zhHeadline": "供应链运营、数据分析与智能自动化",
+      "console": []
+    },
+    {
+      "viewport": "390x844",
+      "enOverflow": false,
+      "zhOverflow": false,
+      "title": "Wang Bohan | Supply Chain Operations, Analytics & Automation",
+      "nav": 7,
+      "email": "your.email@example.com",
+      "langHref": "/zh/",
+      "zhHeadline": "供应链运营、数据分析与智能自动化",
+      "console": []
+    },
+    {
+      "viewport": "375x667",
+      "enOverflow": false,
+      "zhOverflow": false,
+      "title": "Wang Bohan | Supply Chain Operations, Analytics & Automation",
+      "nav": 7,
+      "email": "your.email@example.com",
+      "langHref": "/zh/",
+      "zhHeadline": "供应链运营、数据分析与智能自动化",
+      "console": []
+    }
+  ],
+  "reduced": {
+    "reduce": true,
+    "revealVisible": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+    ]
+  },
+  "screenshots": "/Users/bohanwang/Documents/New project/wang-bohan-portfolio/output/screenshots"
+}

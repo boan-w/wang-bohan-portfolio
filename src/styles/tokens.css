@@ -1,0 +1,49 @@
+:root {
+  /* Color tokens */
+  --color-ink: #f6f1e8;
+  --color-ink-muted: #c7d0d8;
+  --color-ink-soft: #8e9daa;
+  --color-bg: #07111f;
+  --color-bg-deep: #030813;
+  --color-panel: #0d1a2a;
+  --color-panel-strong: #13263a;
+  --color-line: rgba(198, 218, 232, 0.18);
+  --color-accent: #27d7e8;
+  --color-accent-2: #1fbf9a;
+  --color-warm: #e7c982;
+  --color-paper: #fbf7ef;
+  --color-paper-2: #eee7dc;
+
+  /* Typography tokens: system stacks for China compatibility, no remote fonts. */
+  --font-display: ui-serif, "Iowan Old Style", "Songti SC", "STSong", "Noto Serif CJK SC", Georgia, serif;
+  --font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  /* Layout tokens */
+  --grid-margin: clamp(20px, 4.5vw, 72px);
+  --section-y: clamp(76px, 11vw, 152px);
+  --content-max: 1440px;
+  --nav-height: 72px;
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+
+  /* Motion tokens */
+  --motion-fast: 180ms;
+  --motion-ui: 360ms;
+  --motion-editorial: 760ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --reveal-distance: 28px;
+  --stagger-step: 90ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 1ms;
+    --motion-ui: 1ms;
+    --motion-editorial: 1ms;
+    --reveal-distance: 0;
+    --stagger-step: 0ms;
+  }
+}

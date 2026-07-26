@@ -1,0 +1,279 @@
+---
+import {
+  about,
+  capabilities,
+  contact,
+  education,
+  experiences,
+  hero,
+  nav,
+  projects,
+  siteMeta,
+  type Locale,
+} from "../data/profile";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const otherLocalePath = locale === "zh" ? "/" : "/zh/";
+const ids = ["home", "about", "experience", "projects", "capabilities", "education", "contact"];
+const labels = nav[locale];
+const text = {
+  en: {
+    skip: "Skip to content",
+    location: "Singapore / Asia",
+    experienceKicker: "Operating record",
+    experienceTitle: "Experience",
+    projectsKicker: "Commercial case studies",
+    projectsTitle: "Selected Projects",
+    problem: "Business problem",
+    context: "Operational context",
+    approach: "My approach",
+    value: "Business value",
+    capabilitiesKicker: "System map",
+    capabilitiesTitle: "Capabilities",
+    educationKicker: "Academic foundation",
+    educationTitle: "Education",
+    contactKicker: "Direct channel",
+    contactTitle: "Contact",
+    contactLead: "For roles, projects or collaboration around supply-chain analytics and operations automation, email remains the most reliable channel.",
+    copy: "Copy email",
+    copied: "Copied",
+    mail: "Email me",
+    resume: "Download resume",
+    unconfigured: "Replace the placeholder email and resume PDF before broad distribution.",
+    links: "Professional links",
+    language: "中文",
+  },
+  zh: {
+    skip: "跳转到正文",
+    location: "Singapore / Asia",
+    experienceKicker: "运营经历",
+    experienceTitle: "职业经历",
+    projectsKicker: "商业化项目呈现",
+    projectsTitle: "精选项目",
+    problem: "业务问题",
+    context: "运营场景",
+    approach: "我的方法",
+    value: "业务价值",
+    capabilitiesKicker: "能力系统图",
+    capabilitiesTitle: "能力矩阵",
+    educationKicker: "学术基础",
+    educationTitle: "教育背景",
+    contactKicker: "直接联系",
+    contactTitle: "联系",
+    contactLead: "如有供应链、采购、计划、数据分析或运营自动化相关机会，邮件是最可靠的联系渠道。",
+    copy: "复制邮箱",
+    copied: "已复制",
+    mail: "发送邮件",
+    resume: "下载简历",
+    unconfigured: "正式广泛投递前，请替换占位邮箱和简历 PDF。",
+    links: "职业链接",
+    language: "EN",
+  },
+}[locale];
+
+const isPlaceholderEmail = contact.email.includes("example.com");
+---
+
+<a class="skip-link" href="#main">{text.skip}</a>
+
+<header class="site-header" data-header>
+  <nav class="nav-grid" aria-label="Primary navigation">
+    <a class="wordmark" href="#home" aria-label="Wang Bohan home">
+      <span>BW</span>
+      <b>Wang Bohan</b>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links" data-menu-button>
+      <span></span><span></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <div class="nav-links" id="nav-links" data-nav-links>
+      {ids.map((id, index) => <a href={`#${id}`} data-section-link={id}>{labels[index]}</a>)}
+    </div>
+    <a class="language-link" href={otherLocalePath} data-lang-link>{text.language}</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero section-grid" id="home" data-reveal-scope>
+    <div class="hero-field" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <p class="section-label reveal clip">{hero[locale].label}</p>
+      <h1 class="hero-title reveal">
+        <span>{hero[locale].name}</span>
+        <em>{hero[locale].chineseName}</em>
+      </h1>
+      <h2 class="hero-headline reveal">{hero[locale].headline}</h2>
+      <p class="hero-value reveal">{hero[locale].value}</p>
+      <p class="hero-intro reveal">{hero[locale].intro}</p>
+      <div class="hero-actions reveal">
+        <a class="button button-primary" href="#projects">{hero[locale].primary}<span aria-hidden="true">-></span></a>
+        <a class="button button-secondary" href="#contact">{hero[locale].secondary}</a>
+      </div>
+      <div class="domain-labels reveal" aria-label="Core domains">
+        {hero[locale].labels.map((item) => <span>{item}</span>)}
+      </div>
+    </div>
+
+    <div class="hero-system reveal" aria-label="Animated supply-chain operations system">
+      <img
+        src="/assets/operations-intelligence-hero.png"
+        width="1792"
+        height="1024"
+        alt="Abstract supply-chain operations network with routes, warehouse nodes and analytics panels"
+        loading="eager"
+        decoding="async"
+      />
+      <svg class="system-overlay" viewBox="0 0 720 520" aria-hidden="true">
+        <defs>
+          <linearGradient id="lineGlow" x1="0" x2="1">
+            <stop offset="0" stop-color="#27d7e8" />
+            <stop offset="1" stop-color="#e7c982" />
+          </linearGradient>
+        </defs>
+        <path class="flow-line line-a" d="M98 318 C220 210 300 330 424 200 S590 178 648 100" />
+        <path class="flow-line line-b" d="M120 120 C260 178 310 110 408 252 S552 392 652 338" />
+        <g class="node supplier"><circle cx="122" cy="120" r="8" /><text x="138" y="124">Supplier</text></g>
+        <g class="node planning"><circle cx="408" cy="252" r="8" /><text x="424" y="256">Planning</text></g>
+        <g class="node warehouse"><circle cx="652" cy="338" r="8" /><text x="522" y="342">Warehouse</text></g>
+        <g class="node analytics"><circle cx="648" cy="100" r="8" /><text x="524" y="104">Analytics</text></g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="about section-grid" id="about" data-reveal-scope>
+    <div class="section-intro">
+      <p class="section-label reveal">{about[locale].kicker}</p>
+      <h2 class="section-title reveal">{about[locale].title}</h2>
+    </div>
+    <div class="about-body reveal">
+      {about[locale].paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+    <div class="triad reveal" aria-label="Operations analytics automation intersection">
+      {about[locale].intersections.map((item) => <span>{item}</span>)}
+      <b>BW</b>
+    </div>
+  </section>
+
+  <section class="experience section-grid" id="experience" data-reveal-scope>
+    <div class="section-intro sticky-intro">
+      <p class="section-label reveal">{text.experienceKicker}</p>
+      <h2 class="section-title reveal">{text.experienceTitle}</h2>
+      <p class="muted reveal">{locale === "zh" ? "仅呈现已提供或可验证的信息，不补充未经确认的日期、公司或指标。" : "Only verified or provided details are included; no invented dates, companies or metrics."}</p>
+    </div>
+    <div class="timeline" data-timeline>
+      <div class="timeline-rule" aria-hidden="true"><span data-timeline-progress></span></div>
+      {experiences.map((item, index) => (
+        <article class="timeline-item reveal">
+          <p class="timeline-index">{String(index + 1).padStart(2, "0")} / {item.emphasis}</p>
+          <h3>{item.org[locale]}</h3>
+          <p class="role">{item.role[locale]}</p>
+          <ul>
+            {item.points[locale].map((point) => <li>{point}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="projects" id="projects" data-reveal-scope>
+    <div class="project-heading section-grid">
+      <p class="section-label reveal">{text.projectsKicker}</p>
+      <h2 class="section-title reveal">{text.projectsTitle}</h2>
+    </div>
+    <div class="project-list">
+      {projects.map((project, index) => (
+        <article class={`project-case visual-${project.visual} ${index % 2 ? "reverse" : ""}`} data-reveal-scope>
+          <div class="project-copy reveal">
+            <p class="project-number">Case {String(index + 1).padStart(2, "0")}</p>
+            <h3>{project.title[locale]}</h3>
+            <div class="tag-row">{project.tags.map((tag) => <span>{tag}</span>)}</div>
+            <dl>
+              <div><dt>{text.problem}</dt><dd>{project.problem[locale]}</dd></div>
+              <div><dt>{text.context}</dt><dd>{project.context[locale]}</dd></div>
+              <div><dt>{text.approach}</dt><dd>{project.approach[locale]}</dd></div>
+              <div><dt>{text.value}</dt><dd>{project.value[locale]}</dd></div>
+            </dl>
+          </div>
+          <div class="project-visual reveal" aria-hidden="true">
+            <div class="visual-stage">
+              <span data-label={project.tags[0]}></span><span data-label={project.tags[1]}></span><span data-label={project.tags[2]}></span><span></span><span></span>
+              <svg viewBox="0 0 520 320">
+                <path d="M48 246 C128 132 244 254 314 126 S438 98 472 54" />
+                <path d="M58 78 C156 138 214 78 296 184 S424 240 484 168" />
+                <circle cx="68" cy="236" r="12" />
+                <circle cx="302" cy="132" r="12" />
+                <circle cx="464" cy="64" r="12" />
+              </svg>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="capabilities section-grid" id="capabilities" data-reveal-scope>
+    <div class="section-intro">
+      <p class="section-label reveal">{text.capabilitiesKicker}</p>
+      <h2 class="section-title reveal">{text.capabilitiesTitle}</h2>
+    </div>
+    <div class="capability-map reveal">
+      {capabilities.map((group) => (
+        <article>
+          <h3>{group.group[locale]}</h3>
+          <div>{group.items.map((item) => <span>{item}</span>)}</div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="education section-grid" id="education" data-reveal-scope>
+    <div class="section-intro">
+      <p class="section-label reveal">{text.educationKicker}</p>
+      <h2 class="section-title reveal">{text.educationTitle}</h2>
+    </div>
+    <div class="education-list reveal">
+      {education.map((item) => (
+        <article>
+          <p>{item.years}</p>
+          <h3>{item.school}</h3>
+          <strong>{item.degree[locale]}</strong>
+          <div>{item.themes.map((theme) => <span>{theme}</span>)}</div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="contact section-grid" id="contact" data-reveal-scope>
+    <div class="section-intro">
+      <p class="section-label reveal">{text.contactKicker}</p>
+      <h2 class="section-title reveal">{text.contactTitle}</h2>
+      <p class="muted reveal">{text.contactLead}</p>
+    </div>
+    <div class="contact-panel reveal">
+      <p class="email-label">Email</p>
+      <a class="email-address" href={`mailto:${contact.email}`}>{contact.email}</a>
+      <div class="contact-actions">
+        <button class="button button-secondary" type="button" data-copy-email={contact.email} data-copy-label={text.copy} data-copied-label={text.copied}>{text.copy}</button>
+        <a class="button button-primary" href={`mailto:${contact.email}`}>{text.mail}<span aria-hidden="true">-></span></a>
+        {contact.resumeUrl && <a class="button button-secondary" href={contact.resumeUrl} download>{text.resume}</a>}
+      </div>
+      {isPlaceholderEmail && <p class="contact-warning">{text.unconfigured}</p>}
+      {(contact.linkedin || contact.github) && (
+        <div class="social-links" aria-label={text.links}>
+          {contact.linkedin && <a href={contact.linkedin}>LinkedIn</a>}
+          {contact.github && <a href={contact.github}>GitHub</a>}
+        </div>
+      )}
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>BW</span>
+  <p>Wang Bohan / 王泊翰</p>
+  <a href={locale === "zh" ? siteMeta.baseUrl : `${siteMeta.baseUrl}/zh/`}>{locale === "zh" ? "English" : "中文"}</a>
+</footer>
